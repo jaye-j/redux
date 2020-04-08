@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import deleteProduct from "../actions/deleteProduct";
+import "./styles.css";
 
 class Cart extends Component {
   render() {
     return (
-      <>
+      <div className="main">
         <table>
           <thead>
             <tr>
@@ -22,6 +23,7 @@ class Cart extends Component {
                   <td>{obj.productName}</td>
                   <td>{obj.productPrice}</td>
                   <td
+                    style={{ cursor: "pointer" }}
                     onClick={() => {
                       this.props.onDeleteProduct(obj);
                     }}
@@ -33,7 +35,7 @@ class Cart extends Component {
             })}
           </tbody>
         </table>
-      </>
+      </div>
     );
   }
 }
