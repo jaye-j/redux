@@ -3,7 +3,7 @@ let projectReducer = (state, action) => {
     state = {
       projects: [
         {
-          id: 0,
+          id: "0",
           title: "test",
           category: "Front-End",
         },
@@ -19,11 +19,13 @@ let projectReducer = (state, action) => {
 
       case "deleteProject":
         let filteredProjects = [...state.projects];
-        let index = state.filteredProjects.findIndex(
-          (pObj) => pObj.id === action.id
-        );
+        //console.log("copy array: ", filteredProjects);
+        let index = filteredProjects.findIndex((pObj) => pObj.id === action.id);
 
+        //console.log("filter array: ", filteredProjects);
         filteredProjects.splice(index, 1);
+
+        //console.log("spliced array: ", filteredProjects);
 
         return {
           ...state,
@@ -31,6 +33,7 @@ let projectReducer = (state, action) => {
         };
 
       default:
+        console.log("nothing found: error");
         return state;
     }
   }

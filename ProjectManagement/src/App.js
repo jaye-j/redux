@@ -4,23 +4,25 @@ import { connect } from "react-redux";
 class App extends Component {
   render() {
     return (
-      <div>
+      <>
         Hello World
-        {this.props.projects.map((project) => {
-          return (
-            <li key={project.id}>
-              {project.title} | {project.category}
-            </li>
-          );
-        })}
-      </div>
+        <ul>
+          {this.props.proj.map((project) => {
+            return (
+              <li key={project.id}>
+                {project.title} | {project.category}
+              </li>
+            );
+          })}
+        </ul>
+      </>
     );
   }
 }
 
 let mapStateToProps = (state) => {
   return {
-    projects: state.projects,
+    proj: state.projects,
   };
 };
 

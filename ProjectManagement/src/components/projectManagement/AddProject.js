@@ -49,7 +49,7 @@ class AddProject extends React.Component {
                 <Form.Label>Category</Form.Label>
                 <Form.Control as="select" size="lg" custom ref="category">
                   <option value="Front-End">Front-End</option>
-                  <option value="Beck-End">Back-End</option>
+                  <option value="Back-End">Back-End</option>
                 </Form.Control>
               </Form.Group>
             </Form>

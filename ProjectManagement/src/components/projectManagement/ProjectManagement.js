@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Project from "./Project";
 import AddProject from "./AddProject";
-import deleteProject from "../../actions/deleteProject";
-import addProject from "../../actions/addProject";
-import { connect } from "react-redux";
 import "./styles.css";
+//imported these into step 5
+import { connect } from "react-redux";
+import addProject from "../../actions/addProject";
+import deleteProject from "../../actions/deleteProject";
 
 class ProjectManagement extends Component {
   constructor(props) {
@@ -39,24 +40,28 @@ class ProjectManagement extends Component {
   }
 
   handleAddProject = (newProject) => {
-    let oldProjects = this.state.projects;
-    oldProjects.push(newProject);
+    // let oldProjects = [...this.state.projects];
+    // oldProjects.push(newProject);
 
-    this.setState({
-      projects: oldProjects,
-    });
+    // this.setState({
+    //     projects: oldProjects
+    // })
+
+    this.props.onAddProject(newProject);
   };
 
   handleDeleteProject = (id) => {
-    let oldProjects = [...this.state.projects];
+    // let oldProjects = [...this.state.projects];
 
-    let index = oldProjects.findIndex((pObj) => pObj.id === id);
+    // let index = oldProjects.findIndex(pObj => pObj.id === id)
 
-    oldProjects.splice(index, 1);
+    // oldProjects.splice(index, 1)
 
-    this.setState({
-      projects: oldProjects,
-    });
+    // this.setState({
+    //     projects: oldProjects
+    // })
+
+    this.props.onDeleteProject(id);
   };
 
   render() {
@@ -71,7 +76,7 @@ class ProjectManagement extends Component {
         <br />
         <br />
         <Project
-          projects={this.state.projects}
+          projects={this.props.proj}
           onDelete={(id) => {
             this.handleDeleteProject(id);
           }}
