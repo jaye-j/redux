@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Project from "./Project";
 import AddProject from "./AddProject";
+import deleteProject from "../../actions/deleteProject";
+import addProject from "../../actions/addProject";
+import { connect } from "react-redux";
 import "./styles.css";
 
 class ProjectManagement extends Component {
@@ -45,7 +48,7 @@ class ProjectManagement extends Component {
   };
 
   handleDeleteProject = (id) => {
-    let oldProjects = this.state.projects;
+    let oldProjects = [...this.state.projects];
 
     let index = oldProjects.findIndex((pObj) => pObj.id === id);
 
@@ -78,4 +81,17 @@ class ProjectManagement extends Component {
   }
 }
 
-export default ProjectManagement;
+let mapStateToProps = (state) => {
+  return {
+    proj: state.projects,
+  };
+};
+
+let mapDispatchToProps = (dispatch) => {
+  return {
+    onAddProject: (project) => dispatch(addProject(project)),
+    onDeleteProject: (id) => dispatch(deleteProject(id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectManagement);
