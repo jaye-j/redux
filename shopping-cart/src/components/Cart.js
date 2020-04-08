@@ -21,7 +21,7 @@ class Cart extends Component {
               return (
                 <tr key={index}>
                   <td>{obj.productName}</td>
-                  <td>{obj.productPrice}</td>
+                  <td>$ {obj.productPrice}</td>
                   <td
                     style={{ cursor: "pointer" }}
                     onClick={() => {
