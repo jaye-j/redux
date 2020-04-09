@@ -9,33 +9,29 @@ let projectReducer = (state, action) => {
         },
       ],
     };
+  }
 
-    switch (action.type) {
-      case "addProject":
-        return {
-          ...state,
-          projects: state.projects.concat(action.project),
-        };
+  switch (action.type) {
+    case "addProject":
+      return {
+        ...state,
+        projects: state.projects.concat(action.project),
+      };
 
-      case "deleteProject":
-        let filteredProjects = [...state.projects];
-        //console.log("copy array: ", filteredProjects);
-        let index = filteredProjects.findIndex((pObj) => pObj.id === action.id);
+    case "deleteProject":
+      let filteredProjects = [...state.projects];
 
-        //console.log("filter array: ", filteredProjects);
-        filteredProjects.splice(index, 1);
+      let index = filteredProjects.findIndex((pObj) => pObj.id === action.id);
 
-        //console.log("spliced array: ", filteredProjects);
+      filteredProjects.splice(index, 1);
 
-        return {
-          ...state,
-          projects: filteredProjects,
-        };
+      return {
+        ...state,
+        projects: filteredProjects,
+      };
 
-      default:
-        console.log("nothing found: error");
-        return state;
-    }
+    default:
+      return state;
   }
 };
 

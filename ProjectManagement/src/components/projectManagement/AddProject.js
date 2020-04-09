@@ -8,10 +8,6 @@ class AddProject extends React.Component {
   }
 
   handleSubmit = (e) => {
-    // console.log(this.refs.title.value);
-
-    // console.log(this.refs.category.value)
-
     e.preventDefault();
 
     this.props.addProject({
